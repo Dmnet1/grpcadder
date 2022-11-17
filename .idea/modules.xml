@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/grpcadder.iml" filepath="$PROJECT_DIR$/.idea/grpcadder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/memcached.iml" filepath="$PROJECT_DIR$/.idea/memcached.iml" />
     </modules>
   </component>
 </project>

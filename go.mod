@@ -4,6 +4,7 @@ go 1.19
 
 require (
 	github.com/chzyer/readline v0.0.0-20180603132655-2972be24d48e // indirect
+	github.com/docker/compose v1.25.2 // indirect
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/fsnotify/fsnotify v1.5.4 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
@@ -17,6 +18,7 @@ require (
 	github.com/inconshreveable/go-update v0.0.0-20160112193335-8152e7eb6ccf // indirect
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/jhump/protoreflect v1.12.0 // indirect
+	github.com/joho/godotenv v1.4.0 // indirect
 	github.com/k0kubun/pp v3.0.1+incompatible // indirect
 	github.com/ktr0731/evans v0.10.9 // indirect
 	github.com/ktr0731/go-multierror v0.0.0-20171204182908-b7773ae21874 // indirect
