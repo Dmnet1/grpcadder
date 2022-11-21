@@ -2,9 +2,8 @@ package cache
 
 import (
 	"context"
+	"errors"
 	"github.com/golang/protobuf/ptypes/empty"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
 	cache "grpcadder/api/proto"
 	"sync"
 )
@@ -14,14 +13,37 @@ type CacheServer struct {
 	m  map[string]string
 }
 
-func (c *CacheServer) Get(ctx context.Context, key *cache.Key) (*cache.Item, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Get not implemented")
+func (c *CacheServer) Get(_ context.Context, in *cache.Key) (*cache.Item, error) {
+	c.mx.RLock()
+	_, found := c.m[in.Key]
+	if !found {
+		c.mx.RUnlock()
+		err := errors.New("the cache has no values for the given key")
+		return nil, err
+	}
+
+	getCache := cache.Item{Key: in.Key, Value: c.m[in.Key]}
+
+	c.mx.RUnlock()
+	return &getCache, nil
 }
-func (c *CacheServer) Set(ctx context.Context, item *cache.Item) (*empty.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Set not implemented")
+
+func (c *CacheServer) Set(_ context.Context, in *cache.Item) (*empty.Empty, error) {
+	if c.m == nil {
+		c.m = make(map[string]string)
+	}
+
+	c.m[in.Key] = in.Value
+	out := new(empty.Empty)
+	//var out *empty.Empty //Равна ли эта строка предыдущей?
+	return out, nil
+
 }
-func (c *CacheServer) Delete(ctx context.Context, key *cache.Key) (*empty.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
+
+func (c *CacheServer) Delete(_ context.Context, in *cache.Key) (*empty.Empty, error) {
+	delete(c.m, in.Key)
+	out := new(empty.Empty)
+	return out, nil
 }
 
 /*type CacheServer struct {
