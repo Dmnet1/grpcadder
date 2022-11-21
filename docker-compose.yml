@@ -2,6 +2,8 @@ version: '2'
 services:
   memcached:
     container_name: memcached
-    image: memcached:latest
+    image: launcher.gcr.io/google/memcached1
+    command:
+      - '-m 256'
     ports:
       - '11211:11211'
