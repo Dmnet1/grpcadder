@@ -1,12 +1,13 @@
 package main
 
 import (
-	"context"
 	"flag"
 	"google.golang.org/grpc"
 	cache "grpcadder/api/proto"
 	"log"
 )
+
+агтс
 
 func main() {
 	flag.Parse()
@@ -20,7 +21,7 @@ func main() {
 	}
 
 	c := cache.NewCacheClient(conn)
-	c.Get(context.Background(), "")
 	c.Set()
+	c.Get()
 	c.Delete()
 }

@@ -3,6 +3,7 @@ module grpcadder
 go 1.19
 
 require (
+	github.com/bradfitz/gomemcache v0.0.0-20221031212613-62deef7fc822 // indirect
 	github.com/chzyer/readline v0.0.0-20180603132655-2972be24d48e // indirect
 	github.com/docker/compose v1.25.2 // indirect
 	github.com/fatih/color v1.13.0 // indirect
